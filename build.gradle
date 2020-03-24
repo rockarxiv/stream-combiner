@@ -1,7 +1,7 @@
 plugins {
     id 'java'
 }
-
+apply plugin: 'application'
 group 'homework'
 version '1.0-SNAPSHOT'
 
@@ -11,13 +11,31 @@ repositories {
     mavenCentral()
 }
 
+mainClassName = 'com.homework.streamcombiner.Runner'
+
+jar {
+    archiveName = 'stream-combiner.jar'
+    manifest {
+        attributes 'Main-Class': 'com.homework.streamcombiner.Runner'
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    doLast {
+        copy {
+            from 'build/libs/stream-combiner.jar'
+            into './'
+        }
+    }
+}
+
+
+
 dependencies {
-    implementation 'org.yaml:snakeyaml:1.26'
-    implementation 'org.eclipse.persistence:org.eclipse.persistence.moxy:2.5.2'
-    implementation 'javax.xml.bind:jaxb-api:2.2.11'
-    implementation 'org.slf4j:slf4j-log4j12:1.7.30'
+    compile 'org.yaml:snakeyaml:1.26'
+    compile 'org.slf4j:slf4j-log4j12:1.7.30'
+    compile 'com.google.code.gson:gson:2.8.6'
     compileOnly 'org.projectlombok:lombok:1.18.12'
-    implementation 'com.google.code.gson:gson:2.8.6'
     testCompileOnly 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
