@@ -1,0 +1,9 @@
+consumerReadTimeout: 10
+consumerReadTimeoutUnits: SECONDS
+xmlConsumerConfigs:
+  - host: localhost
+    port: 8088
+    queueSize: 10
+  - host: localhost
+    port: 8089
+    queueSize: 10
