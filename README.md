@@ -18,6 +18,17 @@ To configure Stream combiner you need to create yml file with the following conf
  
  ## How To Run
  
+ ## XmlProducer
+ 
+ To run XmlProducer you need to:
+ 
+    * cd $projectRoot/Xml Producer --> where projectRoot is a root directory of Stream Combiner
+    
+    * gradle run --args='$port $dataFilePath' --> where $port is port number that you want to run on, and $dataFilePath is a path to file that contains data you want to publish. [Example of dataFile](Xml Producer/src/main/resources/testData.txt)
+ 
+ 
+ ## Stream Combiner
+ 
  To run the application you need to call:
  
     gradle run --args='$configurationPath' --> where $configurationPath is path to your yml config file
